@@ -9,6 +9,9 @@ The format is based on Keep a Changelog.
 ### Added
 - Docs: guía de hotfix para `PRTOUCH_PROBE_ZOFFSET` cuando `probe_result` es inmutable.
 
+### Changed
+- `config/printer.cfg`: sincronizado con se01 (agregado `[firmware_retraction]`, `pressure_advance` a `0.1`).
+
 ## [1.2.0] - 2026-03-12
 
 ### Added
