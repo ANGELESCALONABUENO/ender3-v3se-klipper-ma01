@@ -46,11 +46,11 @@ Configuracion productiva para Ender 3 V3 SE con enfoque en operacion diaria:
 
 ## Fork de Klipper en uso
 
-Este setup depende de un fork para soporte `prtouch` en Ender 3 V3 SE:
+Este setup usa actualmente el fork de jpcurti para Ender 3 V3 SE con soporte de display:
 
-- `https://github.com/0xD34D/klipper_ender3_v3_se`
+- `https://github.com/jpcurti/ender3-v3-se-klipper-with-display`
 
-Si migras a Klipper oficial, valida primero compatibilidad de `prtouch` y macros asociadas.
+Nota: este fork no incluye `gcode_shell_command`, por eso la sincronizacion de Spoolman se ejecuta via cron (`spoolman_sync.py`) y no con `RUN_SHELL_COMMAND`.
 
 ## Macro DESTRABAR_BLTOUCH
 
