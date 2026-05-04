@@ -67,6 +67,22 @@ def main() -> int:
 
     _log(f"start moonraker={moonraker} spoolman={spoolman_server}")
 
+    # Skip durante impresion activa -- evita flood de consola y competencia con MCU
+    try:
+        ps = _http_json(f"{moonraker}/printer/objects/query?print_stats=state")
+        print_state = (
+            ps.get("result", {})
+            .get("status", {})
+            .get("print_stats", {})
+            .get("state", "")
+        )
+        if print_state in ("printing", "paused"):
+            _log(f"skip: state={print_state}")
+            print(f"spoolman_sync: skip (state={print_state})")
+            return 0
+    except Exception as e:
+        _log(f"warn: no se pudo verificar estado de impresion: {e!r}")
+
     status = _http_json(f"{moonraker}/server/spoolman/status")
     spool_id = (status.get("result") or {}).get("spool_id")
     if spool_id in (None, "", "None"):
