@@ -8,9 +8,12 @@ The format is based on Keep a Changelog.
 
 ### Added
 - Docs: guía de hotfix para `PRTOUCH_PROBE_ZOFFSET` cuando `probe_result` es inmutable.
+- Docs: agregado `HOSTS.md` con mapeo de impresoras/hosts (`se01`, `se02`, `ma01`) e IPs Tailscale.
+- Docs: agregada sección de hosts de respaldo por IP directa en `HOSTS.md`.
 
 ### Changed
 - `config/printer.cfg`: sincronizado con se01 (agregado `[firmware_retraction]`, `pressure_advance` a `0.1`).
+- `README.md`: actualizado para incluir `HOSTS.md` en la estructura del repo.
 
 ## [1.2.0] - 2026-03-12
 
