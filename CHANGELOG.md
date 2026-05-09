@@ -11,10 +11,13 @@ The format is based on Keep a Changelog.
 - Docs: agregado `HOSTS.md` con mapeo de impresoras/hosts (`se01`, `se02`, `ma01`) e IPs Tailscale.
 - Docs: agregada sección de hosts de respaldo por IP directa en `HOSTS.md`.
 - Docs: agregado `docs/future-plans-inmateriis.md` con plan semanal de mejoras (2026-05-08) para SE01, SE02 y MA01.
+- Docs: agregado `docs/se01-dacai-special-plan.md` con plan individual de SE01 para caso especial de pantalla DACAI.
 
 ### Changed
 - `config/printer.cfg`: sincronizado con se01 (agregado `[firmware_retraction]`, `pressure_advance` a `0.1`).
 - `README.md`: actualizado para incluir `HOSTS.md` en la estructura del repo.
+- `config/macros/tooling_macros.cfg`: agregado macro `EXTRAER_MATERIAL` (usa 70% de `SPOOLMAN_ACTIVE.nozzle_temp`).
+- `docs/future-plans-inmateriis.md`: Semana 1 marcada como ejecutada y documentado alcance por impresora (SE01 por Mainsail; SE02/MA01 en display).
 
 ## [1.2.0] - 2026-03-12
 

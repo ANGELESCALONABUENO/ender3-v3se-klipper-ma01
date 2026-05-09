@@ -12,7 +12,7 @@ Enfoque actual: extraccion de material, `spoolman_active`, `calibrar_punta`, des
 
 | ID | Mejora | Prioridad | Estado |
 | --- | --- | --- | --- |
-| MJR-001 | Macro de extraccion y acceso en pantalla | Alta | Por iniciar |
+| MJR-001 | Macro de extraccion y acceso en pantalla | Alta | Ejecutada (2026-05-09) |
 | MJR-002 | Revision de `SPOOLMAN_ACTIVE` | Alta | Por iniciar |
 | MJR-003 | Efectividad de `calibrar_punta` | Media | Por iniciar |
 | MJR-004 | Mejora de `DESTRABAR_BLTOUCH` | Alta | Por iniciar |
@@ -22,9 +22,18 @@ Enfoque actual: extraccion de material, `spoolman_active`, `calibrar_punta`, des
 
 Macro de extraccion y acceso en pantalla:
 
-- Definir macro base por material.
-- Publicar acceso en display.
-- Validar 3 ejecuciones exitosas por impresora.
+- Implementado macro `EXTRAER_MATERIAL` en SE01, SE02 y MA01.
+- Regla de temperatura aplicada: usa `SPOOLMAN_ACTIVE.nozzle_temp` al 70% para extraccion.
+- Ejemplo: material a 220C -> extraccion a 154C.
+- Publicado en display para SE02 y MA01 (slot `MACRO5`).
+- En SE01 queda disponible por Mainsail (caso especial de pantalla DACAI; no se publica en display por ahora).
+- Validacion operativa de 3 corridas por impresora queda pendiente de registro formal.
+
+#### Plan individual SE01 (caso especial)
+
+SE01 usa pantalla DACAI (familia Ender 3 V2), por lo que su camino de migracion de display es distinto.
+
+- Ver plan individual: `docs/se01-dacai-special-plan.md`
 
 #### Semana 2
 
