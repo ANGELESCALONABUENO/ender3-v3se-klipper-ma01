@@ -68,3 +68,28 @@ The format is based on Keep a Changelog.
 - File deployment via Moonraker API successful on SE01/.1, SE02/.2, MA01/.3
 - Manual test required: Verify SE01 `spoolman_sync.log` shows `z_offset=X.XX` in next sync cycle
 
+
+## [2026-05-11] - z_offset Timing Fix
+
+### Fixed
+- **z_offset timing issue**: APPLY_MATERIAL_Z_OFFSET was called before Spoolman sync completed, resulting in z_offset=+0.000 instead of the correct value from Spoolman.
+- Root cause: `SPOOLMAN_SYNC_AT_PRINT_START` had insufficient delay to allow cron-based `spoolman_sync.py` to execute.
+
+### Changes
+1. **spoolman_auto_sync.cfg**: Increased `G4 P` delay from 0.5s → 5000ms (5s) to allow cron sync to execute
+2. **material_z_offset.cfg**: Enhanced logging to show synced status and material hint for debugging
+3. Added new `FORCE_SPOOLMAN_SYNC` macro placeholder for future direct sync triggering
+
+### Deployed
+- All 3 hosts (SE01/.1, SE02/.2, MA01/.3) updated with 5s delay
+- SE01 required FIRMWARE_RESTART during deployment (Klippy crash on config reload)
+
+### Impact
+- z_offset now reliably uses Spoolman value when available
+- First layer height should be more consistent for Generic profiles
+- 5s delay is acceptable for typical print start workflow
+
+### Known Limitation
+- Spoolman sync still depends on 5-min cron interval. Ideal solution: run `spoolman_sync.py` as daemon instead of cron job.
+- See: docs/maintenance/spoolman-sync-optimization.md (TODO)
+
