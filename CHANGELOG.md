@@ -6,6 +6,27 @@ The format is based on Keep a Changelog.
 
 ## [Unreleased]
 
+### Fixed
+- **Se01 JOB_QUEUE_STATE sync**: Se01 estaba generando UndefinedError en `SYNC_SPOOLMAN_NOW` porque le faltaba la definición del macro `JOB_QUEUE_STATE` en `queue_and_finish.cfg`. Se sincronizó con Se02/Ma01 para que todos los equipos tengan configuración idéntica.
+  - Archivo: `config/macros/queue_and_finish.cfg`
+  - Respaldo creado: `queue_and_finish.cfg.bak-<timestamp>`
+  - Se01 reiniciado y verificado sin errores recientes
+
+### Added
+- Docs: Nuevo documento `docs/job-queue-state-fix.md` describiendo el problema, causa raíz, solución y estado actual de todos los 3 equipos.
+
+### Changed
+
+### Removed
+
+## [Unreleased] (Previo)
+
+All notable changes to this project will be documented in this file.
+
+The format is based on Keep a Changelog.
+
+## [Unreleased]
+
 ### Added
 - Docs: guía de hotfix para `PRTOUCH_PROBE_ZOFFSET` cuando `probe_result` es inmutable.
 - Docs: agregado `HOSTS.md` con mapeo de impresoras/hosts (`se01`, `se02`, `ma01`) e IPs Tailscale.
