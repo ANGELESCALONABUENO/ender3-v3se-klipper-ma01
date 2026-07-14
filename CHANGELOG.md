@@ -6,6 +6,24 @@ The format is based on Keep a Changelog.
 
 ## [Unreleased]
 
+### Added
+- **Git submódulo para DESTRABAR_BLTOUCH**: Agregado submódulo que apunta a `ender3-v3se-crtouch-destrabe-macro` para mantener sincronización automática del macro.
+  - Submódulo ubicado en `macros/destrabe-bltouch-src/`
+  - Script de sincronización: `scripts/sync-destrabe-bltouch.sh`
+  - Permite actualizar el macro desde el repositorio dedicado
+- Docs: Nuevo documento `docs/destrabe-bltouch-submodule.md` con instrucciones de sincronización y mantenimiento
+- Docs: Actualizado `README.md` con referencia al submódulo
+
+### Fixed
+- **Se01 JOB_QUEUE_STATE sync**: Se01 tenía UndefinedError en `SYNC_SPOOLMAN_NOW` porque le faltaba la definición del macro `JOB_QUEUE_STATE` en `queue_and_finish.cfg`. Se sincronizó con Se02/Ma01 para que todos los equipos tengan configuración idéntica.
+  - Archivo: `config/macros/queue_and_finish.cfg`
+  - Respaldo creado: `queue_and_finish.cfg.bak-<timestamp>`
+  - Se01 reiniciado y verificado sin errores recientes
+
+### Changed
+
+### Removed
+
 ### Fixed
 - **Se01 JOB_QUEUE_STATE sync**: Se01 estaba generando UndefinedError en `SYNC_SPOOLMAN_NOW` porque le faltaba la definición del macro `JOB_QUEUE_STATE` en `queue_and_finish.cfg`. Se sincronizó con Se02/Ma01 para que todos los equipos tengan configuración idéntica.
   - Archivo: `config/macros/queue_and_finish.cfg`
